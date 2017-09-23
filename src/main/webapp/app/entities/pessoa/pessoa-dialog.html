@@ -1,0 +1,131 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPessoaLabel">Create or edit a Pessoa</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.pessoa.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.pessoa.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_primeiroNome">Primeiro Nome</label>
+            <input type="text" class="form-control" name="primeiroNome" id="field_primeiroNome"
+                    ng-model="vm.pessoa.primeiroNome"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.primeiroNome.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.primeiroNome.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.primeiroNome.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_segundoNome">Segundo Nome</label>
+            <input type="text" class="form-control" name="segundoNome" id="field_segundoNome"
+                    ng-model="vm.pessoa.segundoNome"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.segundoNome.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.segundoNome.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.segundoNome.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_matricula">Matricula</label>
+            <input type="number" class="form-control" name="matricula" id="field_matricula"
+                    ng-model="vm.pessoa.matricula"
+                    required/>
+            <div ng-show="editForm.matricula.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.matricula.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.matricula.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.pessoa.email"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.email.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.email.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.email.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_numeroContato">Numero Contato</label>
+            <input type="number" class="form-control" name="numeroContato" id="field_numeroContato"
+                    ng-model="vm.pessoa.numeroContato"
+                    required/>
+            <div ng-show="editForm.numeroContato.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numeroContato.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.numeroContato.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_diponibilidade">Diponibilidade</label>
+                <input type="checkbox" name="diponibilidade" id="field_diponibilidade"
+                          ng-model="vm.pessoa.diponibilidade"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tipoDeUsuario">Tipo De Usuario</label>
+            <select class="form-control" name="tipoDeUsuario" ng-model="vm.pessoa.tipoDeUsuario" id="field_tipoDeUsuario" required>
+                <option value="ALUNO">ALUNO</option>
+                <option value="PROFESSOR">PROFESSOR</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+            <div ng-show="editForm.tipoDeUsuario.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tipoDeUsuario.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_professor">Professor</label>
+            <select class="form-control" id="field_professor" name="professor" ng-model="vm.pessoa.professor" ng-options="pessoa as pessoa.primeiroNome for pessoa in vm.pessoas track by pessoa.primeiroNome">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

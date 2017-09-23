@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pessoa",
+            "otherEntityName": "pessoa",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "usuario"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "login",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 32
+        },
+        {
+            "fieldName": "senha",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170923190344",
+    "entityTableName": "usuario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

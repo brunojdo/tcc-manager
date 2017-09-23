@@ -1,0 +1,25 @@
+
+enum TipoDeUsuario{
+	ALUNO,
+    PROFESSOR,
+    ADMIN
+}
+entity Pessoa{
+	primeiroNome String required minlength(3),
+    segundoNome String required minlength(3),
+    matricula Long required,
+    email String required minlength(3),
+    numeroContato Long required,
+    diponibilidade Boolean,
+    tipoDeUsuario TipoDeUsuario required,
+}
+entity Usuario{
+    login String required minlength(3) maxlength(32),
+    senha String required
+}
+relationship OneToMany{
+	Pessoa{aluno} to Pessoa{professor}
+}
+relationship OneToOne{
+	Usuario{pessoa} to Pessoa{usuario}
+}
