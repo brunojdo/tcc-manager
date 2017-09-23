@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Usuario</span> {{vm.usuario.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Login</span></dt>
+        <dd>
+            <span>{{vm.usuario.login}}</span>
+        </dd>
+        <dt><span>Senha</span></dt>
+        <dd>
+            <span>{{vm.usuario.senha}}</span>
+        </dd>
+        <dt><span>Pessoa</span></dt>
+        <dd>
+            <a ui-sref="pessoa-detail({id:vm.usuario.pessoa.id})">{{vm.usuario.pessoa.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="usuario-detail.edit({id:vm.usuario.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
