@@ -27,7 +27,6 @@ public class AsyncConfiguration implements AsyncConfigurer {
         this.jHipsterProperties = jHipsterProperties;
     }
 
-    @Override
     @Bean(name = "taskExecutor")
     public Executor getAsyncExecutor() {
         log.debug("Creating Async Task Executor");
@@ -39,7 +38,6 @@ public class AsyncConfiguration implements AsyncConfigurer {
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }
 
-    @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new SimpleAsyncUncaughtExceptionHandler();
     }
